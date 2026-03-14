@@ -1,0 +1,89 @@
+{
+  "nav": {
+    "home": "Ana Sayfa",
+    "about": "Hakkımda",
+    "skills": "Yetenekler",
+    "experience": "Deneyim",
+    "projects": "Projeler",
+    "contact": "İletişim"
+  },
+  "hero": {
+    "greeting": "Merhaba, ben",
+    "name": "Enes",
+    "subtitle": "API geliştirme, ölçeklenebilir sistemler ve modern web teknolojileri üzerine çalışan bir Backend geliştiricisiyim.",
+    "viewProjects": "Projelerimi Gör",
+    "contactMe": "Benimle İletişime Geç"
+  },
+  "about": {
+    "title": "Hakkımda",
+    "description": "Backend geliştirme, API tasarımı ve veritabanı sistemleri üzerine çalışan bir yazılım geliştiricisiyim. Kurumsal CRM ve BPM projelerinde görev aldım ve modern web uygulamaları için ölçeklenebilir backend çözümleri geliştirdim.",
+    "focus": "Odaklandığım Alanlar",
+    "areas": [
+      {
+        "title": "Backend Geliştirme",
+        "desc": ".NET ve Node.js kullanarak güvenilir ve ölçeklenebilir sunucu tarafı uygulamaları geliştirme"
+      },
+      {
+        "title": "REST API Tasarımı",
+        "desc": "Temiz mimariye sahip, iyi dokümante edilmiş RESTful API'ler geliştirme"
+      },
+      {
+        "title": "Veritabanı Sistemleri",
+        "desc": "PostgreSQL, MongoDB, MSSQL ve MySQL gibi veritabanlarıyla çalışma deneyimi"
+      },
+      {
+        "title": "Ölçeklenebilir Web Uygulamaları",
+        "desc": "Büyüyen iş ihtiyaçlarına uyum sağlayabilen web sistemleri geliştirme"
+      }
+    ]
+  },
+  "skills": {
+    "title": "Teknolojiler ve Yetenekler",
+    "categories": {
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "databases": "Veritabanları",
+      "tools": "Araçlar"
+    }
+  },
+  "experience": {
+    "title": "Deneyim",
+    "summary": "Profesyonel Deneyim",
+    "items": [
+      {
+        "role": "Stajyer Yazılım Geliştirici",
+        "description": "Şirket içi kullanılan teknolojileri inceleme ve öğrenme fırsatı buldum. Bu süreçte backend geliştirme, API tasarımı ve veritabanı sistemleri üzerine çalıştım.",
+        "highlights": [
+          "Şirket içi kullanılan teknolojileri inceleme ve öğrenme",
+          "Backend geliştirme",
+          "API tasarımı",
+          "Veritabanı sistemleri"
+        ]
+      },
+      {
+        "role": "Yazılım Geliştirici",
+        "description": "Kurumsal CRM sistemlerinin geliştirilmesi ve bakımında görev aldım. BPM iş akışları tasarladım, backend API'leri geliştirdim ve veritabanı entegrasyonları üzerinde çalıştım.",
+        "highlights": [
+          "Kurumsal CRM sistemlerinin geliştirilmesi",
+          "BPM iş akışlarının tasarlanması ve uygulanması",
+          ".NET ile backend API geliştirme",
+          "Veritabanı tasarımı ve entegrasyonu (MongoDB, MySQL)"
+        ]
+      }
+    ]
+  },
+  "projects": {
+    "title": "Projeler",
+    "subtitle": "GitHub üzerindeki öne çıkan projelerim",
+    "viewOnGithub": "GitHub'da İncele",
+    "noDescription": "Açıklama bulunmuyor"
+  },
+  "contact": {
+    "title": "İletişim",
+    "subtitle": "Aşağıdaki platformlar üzerinden benimle iletişime geçebilirsiniz.",
+    "email": "E-posta"
+  },
+  "footer": {
+    "rights": "Tüm hakları saklıdır."
+  }
+}

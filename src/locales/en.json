@@ -1,0 +1,89 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "experience": "Experience",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "name": "Enes",
+    "subtitle": "Backend Developer focused on APIs, scalable systems, and modern web technologies.",
+    "viewProjects": "View Projects",
+    "contactMe": "Contact Me"
+  },
+  "about": {
+    "title": "About Me",
+    "description": "I'm a backend-focused developer with experience in API development, database design, and enterprise CRM/BPM systems. I build robust, scalable solutions that power modern applications.",
+    "focus": "Focus Areas",
+    "areas": [
+      {
+        "title": "Backend Development",
+        "desc": "Building robust server-side applications with .NET and Node.js"
+      },
+      {
+        "title": "REST API Design",
+        "desc": "Designing clean, well-documented RESTful APIs"
+      },
+      {
+        "title": "Database Systems",
+        "desc": "Working with PostgreSQL, MongoDB, MSSQL, and MySQL"
+      },
+      {
+        "title": "Scalable Web Apps",
+        "desc": "Creating applications that grow with business needs"
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills",
+    "categories": {
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "databases": "Databases",
+      "tools": "Tools"
+    }
+  },
+  "experience": {
+    "title": "Experience",
+    "summary": "Professional Experience",
+    "items": [
+      {
+        "role": "Intern Software Developer",
+        "description": "I had the opportunity to examine and learn the technologies used within the company. During this process, I worked on backend development, API design, and database systems.",
+        "highlights": [
+          "Examining and learning the technologies used within the company",
+          "Backend development",
+          "API design",
+          "Database systems"
+        ]
+      },
+      {
+        "role": "Software Developer",
+        "description": "Developed and maintained enterprise CRM systems, designed BPM workflows, and built scalable backend APIs with database integrations.",
+        "highlights": [
+          "Enterprise CRM system development",
+          "BPM workflow design and implementation",
+          "Backend API development with .NET",
+          "Database design and integration (MongoDB, MySQL)"
+        ]
+      }
+    ]
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Featured repositories from GitHub",
+    "viewOnGithub": "View on GitHub",
+    "noDescription": "No description available"
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Feel free to reach out through any of these platforms.",
+    "email": "Email"
+  },
+  "footer": {
+    "rights": "All rights reserved."
+  }
+}
