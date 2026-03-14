@@ -52,6 +52,7 @@
     "items": [
       {
         "role": "Stajyer Yazılım Geliştirici",
+        "company": "İstanbul Eczacılar Kooperatifi",
         "description": "Şirket içi kullanılan teknolojileri inceleme ve öğrenme fırsatı buldum. Bu süreçte backend geliştirme, API tasarımı ve veritabanı sistemleri üzerine çalıştım.",
         "highlights": [
           "Şirket içi kullanılan teknolojileri inceleme ve öğrenme",
@@ -62,6 +63,7 @@
       },
       {
         "role": "Yazılım Geliştirici",
+        "company": "İstanbul Eczacılar Kooperatifi",
         "description": "Kurumsal CRM sistemlerinin geliştirilmesi ve bakımında görev aldım. BPM iş akışları tasarladım, backend API'leri geliştirdim ve veritabanı entegrasyonları üzerinde çalıştım.",
         "highlights": [
           "Kurumsal CRM sistemlerinin geliştirilmesi",

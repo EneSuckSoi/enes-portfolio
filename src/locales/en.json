@@ -52,6 +52,7 @@
     "items": [
       {
         "role": "Intern Software Developer",
+        "company": "İstanbul Eczacılar Kooperatifi",
         "description": "I had the opportunity to examine and learn the technologies used within the company. During this process, I worked on backend development, API design, and database systems.",
         "highlights": [
           "Examining and learning the technologies used within the company",
@@ -62,6 +63,7 @@
       },
       {
         "role": "Software Developer",
+        "company": "İstanbul Eczacılar Kooperatifi",
         "description": "Developed and maintained enterprise CRM systems, designed BPM workflows, and built scalable backend APIs with database integrations.",
         "highlights": [
           "Enterprise CRM system development",

@@ -50,6 +50,7 @@ export default function Experience() {
             (
               item: {
                 role: string;
+                company: string;
                 description: string;
                 highlights: string[];
               },
@@ -89,11 +90,21 @@ export default function Experience() {
 
                 <div className="glass-card rounded-xl p-6 transition-all duration-300 hover:scale-[1.02]">
                   <h3
-                    className="text-lg font-semibold mb-2"
+                    className="text-lg font-semibold mb-0.5"
                     style={{ color: isDark ? "#22d3ee" : "#0891b2" }}
                   >
                     {item.role}
                   </h3>
+                  <div
+                    className="flex items-center gap-2 text-sm font-medium mb-3 italic tracking-wide"
+                    style={{ color: isDark ? "#94a3b8" : "#64748b" }}
+                  >
+                    <span 
+                      className="w-1 h-4 rounded-full" 
+                      style={{ background: isDark ? "rgba(34, 211, 238, 0.3)" : "rgba(8, 145, 178, 0.2)" }}
+                    />
+                    {item.company}
+                  </div>
                   <p
                     className="text-sm mb-4 leading-relaxed"
                     style={{ color: isDark ? "#cbd5e1" : "#64748b" }}
