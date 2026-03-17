@@ -10,6 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://enes-portfolio-one.vercel.app"),
   title: "Enes | Backend Developer Portfolio",
   description:
     "Backend Developer focused on APIs, scalable systems, and modern web technologies.",
@@ -21,6 +22,33 @@ export const metadata: Metadata = {
     "Portfolio",
     "Enes",
   ],
+  openGraph: {
+    title: "Enes | Backend Developer Portfolio",
+    description:
+      "Backend Developer focused on APIs, scalable systems, and modern web technologies.",
+    url: "https://enes-portfolio-one.vercel.app",
+    siteName: "Enes | Backend Developer Portfolio",
+    images: [
+      {
+        url: "/og-image.jpg", // Fotoğrafını public klasörüne og-image.jpg adıyla koymalısın
+        width: 1200,
+        height: 630,
+        alt: "Enes | Backend Developer Portfolio",
+      },
+    ],
+    locale: "tr_TR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Enes | Backend Developer Portfolio",
+    description:
+      "Backend Developer focused on APIs, scalable systems, and modern web technologies.",
+    images: ["/og-image.jpg"],
+  },
+  verification: {
+    google: "yR-seIRg5BzVnUJFOVN5Jlq1wwv3oUxLP57Esarysjw",
+  },
 };
 
 export default function RootLayout({
