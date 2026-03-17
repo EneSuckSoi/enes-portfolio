@@ -5,10 +5,10 @@ import { useLanguage } from "@/context/LanguageContext";
 import { useTheme } from "@/context/ThemeContext";
 
 const techBubbles = [
-  { name: "JavaScript", color: "#f7df1e", icon: "⚡", delay: 0, x: -160, y: -160 }, // Top-Left
-  { name: "HTML/CSS", color: "#e34f26", icon: "🌐", delay: 0.3, x: 160, y: -160 },   // Top-Right
-  { name: "Docker", color: "#2496ed", icon: "🐳", delay: 0.6, x: -160, y: 160 },   // Bottom-Left
-  { name: "Development", color: "#61dafb", icon: "💻", delay: 0.9, x: 160, y: 160 }, // Bottom-Right
+  { name: "JavaScript", color: "#f7df1e", icon: "⚡", delay: 0, x: -35, y: -35 }, // Top-Left
+  { name: "HTML/CSS", color: "#e34f26", icon: "🌐", delay: 0.3, x: 35, y: -35 },   // Top-Right
+  { name: "Docker", color: "#2496ed", icon: "🐳", delay: 0.6, x: -35, y: 35 },   // Bottom-Left
+  { name: "Development", color: "#61dafb", icon: "💻", delay: 0.9, x: 35, y: 35 }, // Bottom-Right
 ];
 
 export default function Hero() {
@@ -27,15 +27,15 @@ export default function Hero() {
     >
       <div className="relative z-10 flex flex-col items-center text-center px-4 max-w-4xl mx-auto">
         {/* Avatar + Bubbles container */}
-        <div className="relative mb-8" style={{ width: 500, height: 500 }}>
+        <div className="relative mb-8 w-full max-w-[320px] sm:max-w-[500px] aspect-square">
           {/* Floating tech bubbles */}
           {techBubbles.map((bubble, i) => (
             <div
               key={bubble.name}
               className="absolute z-10"
               style={{
-                left: `calc(50% + ${bubble.x}px)`,
-                top: `calc(54% + ${bubble.y}px)`,
+                left: `calc(50% + ${bubble.x}%)`,
+                top: `calc(54% + ${bubble.y}%)`,
                 transform: "translate(-50%, -50%)",
               }}
             >
