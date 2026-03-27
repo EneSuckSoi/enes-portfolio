@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://enes-portfolio-one.vercel.app/sitemap.xml',
+    sitemap: 'https://enesaksoy.com/sitemap.xml',
   }
 }

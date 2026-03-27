@@ -11,7 +11,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://enes-portfolio-one.vercel.app"),
+  metadataBase: new URL("https://enesaksoy.com"),
   title: "Enes | Backend Developer Portfolio",
   description:
     "Backend Developer focused on APIs, scalable systems, and modern web technologies.",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     title: "Enes | Backend Developer Portfolio",
     description:
       "Backend Developer focused on APIs, scalable systems, and modern web technologies.",
-    url: "https://enes-portfolio-one.vercel.app",
+    url: "https://enesaksoy.com",
     siteName: "Enes | Backend Developer Portfolio",
     images: [
       {

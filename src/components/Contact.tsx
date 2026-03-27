@@ -26,7 +26,7 @@ const links = [
   },
   {
     name: "Email",
-    url: "mailto:[enes.aksoy.15.ea@gmail.com]",
+    url: "mailto:enes.aksoy.15.ea@gmail.com",
     icon: (
       <svg
         width="24"
