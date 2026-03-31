@@ -40,6 +40,9 @@ export const metadata: Metadata = {
     locale: "tr_TR",
     type: "website",
   },
+  alternates: {
+    canonical: "/",
+  },
   twitter: {
     card: "summary_large_image",
     title: "Enes | Backend Developer Portfolio",
