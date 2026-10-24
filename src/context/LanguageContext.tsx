@@ -1,59 +1,38 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect, useCallback, ReactNode } from "react";
-import en from "@/locales/en.json";
-import tr from "@/locales/tr.json";
-
-type Locale = "en" | "tr";
+import React, { createContext, useContext, ReactNode } from "react";
+import { dictionaries, Locale, LOCALE_COOKIE } from "@/i18n";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-const translations: Record<Locale, any> = { en, tr };
-
 interface LanguageContextType {
   locale: Locale;
   t: any;
-  toggleLanguage: () => void;
+  otherLocale: Locale;
+  rememberLocale: (locale: Locale) => void;
 }
 
 const LanguageContext = createContext<LanguageContextType>({
   locale: "en",
-  t: en,
-  toggleLanguage: () => {},
+  t: dictionaries.en,
+  otherLocale: "tr",
+  rememberLocale: () => {},
 });
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocale] = useState<Locale>("en");
+// Saved so the proxy sends returning visitors at "/" to the language they chose
+function rememberLocale(locale: Locale) {
+  document.cookie = `${LOCALE_COOKIE}=${locale}; path=/; max-age=31536000; samesite=lax`;
+}
 
-  // Restore the saved choice, otherwise follow the browser language
-  useEffect(() => {
-    let stored: string | null = null;
-    try {
-      stored = localStorage.getItem("locale");
-    } catch {}
-    const initial = stored === "tr" || stored === "en"
-      ? stored
-      : navigator.language.toLowerCase().startsWith("tr") ? "tr" : "en";
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setLocale(initial);
-  }, []);
-
-  useEffect(() => {
-    document.documentElement.lang = locale;
-  }, [locale]);
-
-  const toggleLanguage = useCallback(() => {
-    setLocale((prev) => {
-      const next = prev === "en" ? "tr" : "en";
-      try {
-        localStorage.setItem("locale", next);
-      } catch {}
-      return next;
-    });
-  }, []);
-
+// The locale comes from the URL segment (/en or /tr), so pages are prerendered per language
+export function LanguageProvider({ locale, children }: { locale: Locale; children: ReactNode }) {
   return (
     <LanguageContext.Provider
-      value={{ locale, t: translations[locale], toggleLanguage }}
+      value={{
+        locale,
+        t: dictionaries[locale],
+        otherLocale: locale === "en" ? "tr" : "en",
+        rememberLocale,
+      }}
     >
       {children}
     </LanguageContext.Provider>

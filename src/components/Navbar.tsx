@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { useTheme } from "@/context/ThemeContext";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -8,7 +9,7 @@ const sections = ["about", "skills", "experience", "projects", "contact"];
 
 export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
-  const { locale, t, toggleLanguage } = useLanguage();
+  const { t, otherLocale, rememberLocale } = useLanguage();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState<string | null>(null);
@@ -71,13 +72,16 @@ export default function Navbar() {
         </ul>
 
         <div className="flex items-center gap-5 text-sm text-muted">
-          <button
-            onClick={toggleLanguage}
+          <Link
+            href={`/${otherLocale}`}
+            hrefLang={otherLocale}
+            lang={otherLocale}
+            onClick={() => rememberLocale(otherLocale)}
             className="transition-colors duration-150 hover:text-ink"
-            aria-label={t.nav.switchLanguage}
+            aria-label={t.nav.language}
           >
-            {locale === "en" ? "TR" : "EN"}
-          </button>
+            {otherLocale.toUpperCase()}
+          </Link>
           <button
             onClick={toggleTheme}
             className="transition-colors duration-150 hover:text-ink"

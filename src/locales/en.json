@@ -10,13 +10,14 @@
     "light": "Light",
     "dark": "Dark",
     "switchTheme": "Switch to {theme} theme",
-    "switchLanguage": "Türkçe'ye geç"
+    "language": "Türkçe"
   },
   "hero": {
     "name": "Enes Aksoy",
     "subtitle": "Backend developer focused on APIs, scalable systems, and modern web technologies.",
     "viewProjects": "See projects",
-    "contactMe": "Get in touch"
+    "contactMe": "Get in touch",
+    "cv": "Download CV"
   },
   "about": {
     "title": "About",
@@ -51,30 +52,33 @@
   },
   "experience": {
     "title": "Experience",
-    "current": "Current role",
     "items": [
       {
-        "role": "Software Developer",
+        "role": "Assistant Software Development Specialist",
         "company": "İstanbul Eczacılar Kooperatifi",
-        "description": "Developed and maintained enterprise CRM systems, designed BPM workflows, and built scalable backend APIs with database integrations.",
+        "start": "2025-03",
+        "end": null,
+        "description": "Working on the CRM and BPM modules of the Kiva platform used for the company's business processes, and building the APIs and data layer behind them.",
         "highlights": [
-          "Enterprise CRM system development",
-          "BPM workflow design and implementation",
-          "Backend API development with .NET",
-          "Database design and integration (MongoDB, MySQL)"
+          "Designed automated process rules, triggers, and forms on Kiva BPM based on given workflows",
+          "Developed RESTful APIs with .NET Core",
+          "Wrote complex queries and stored procedures in MySQL and worked on performance improvements",
+          "Built datasets from several MySQL tables with joins and filters, and moved them to MongoDB for use in a Web API"
         ]
       },
       {
-        "role": "Intern Software Developer",
+        "role": "Software Development Intern",
         "company": "İstanbul Eczacılar Kooperatifi",
-        "description": "Examined and learned the technologies used within the company, working on backend development, API design, and database systems.",
+        "start": "2025-02",
+        "end": "2025-03",
+        "description": "Learned the Kiva CRM platform used in the company and analyzed how the system is structured and how it works.",
         "highlights": [
-          "Backend development",
-          "API design",
-          "Database systems"
+          "Studied the user interface, data management, and business logic of CRM screens",
+          "Gained experience with the tools and workflow logic used to digitize business processes"
         ]
       }
-    ]
+    ],
+    "present": "Present"
   },
   "projects": {
     "title": "Projects",
@@ -84,9 +88,30 @@
   },
   "contact": {
     "title": "Contact",
-    "subtitle": "Email is the fastest way to reach me."
+    "subtitle": "Email is the fastest way to reach me.",
+    "cv": "CV (PDF, in Turkish)"
   },
   "footer": {
     "top": "Back to top"
+  },
+  "meta": {
+    "title": "Enes Aksoy | Backend Developer",
+    "description": "Backend developer working with .NET, REST APIs, CRM/BPM processes, and database design.",
+    "keywords": [
+      "Enes Aksoy",
+      "Backend Developer",
+      ".NET",
+      "ASP.NET Core",
+      "REST API",
+      "CRM",
+      "BPM",
+      "MySQL",
+      "MongoDB"
+    ],
+    "ogLocale": "en_US"
+  },
+  "notFound": {
+    "message": "This page doesn't exist. It may have moved, or the link may be wrong.",
+    "home": "Go to the home page"
   }
 }

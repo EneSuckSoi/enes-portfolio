@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { IBM_Plex_Sans, IBM_Plex_Sans_Condensed } from "next/font/google";
-import "./globals.css";
-import { Providers } from "./providers";
+import "../globals.css";
+import { Providers } from "../providers";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Script from "next/script";
+import { dictionaries, isLocale, locales, SITE_URL } from "@/i18n";
 
 const plex = IBM_Plex_Sans({
   subsets: ["latin", "latin-ext"],
@@ -21,58 +23,64 @@ const plexCondensed = IBM_Plex_Sans_Condensed({
 // Runs before paint so the saved or system theme applies without a flash
 const themeScript = `(function(){try{var t=localStorage.getItem("theme");if(t!=="light"&&t!=="dark"){t=matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}document.documentElement.classList.toggle("dark",t==="dark")}catch(e){document.documentElement.classList.add("dark")}})()`;
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://enesaksoy.com"),
-  title: "Enes | Backend Developer Portfolio",
-  description:
-    "Backend Developer focused on APIs, scalable systems, and modern web technologies.",
-  keywords: [
-    "Backend Developer",
-    "API",
-    ".NET",
-    "Node.js",
-    "Portfolio",
-    "Enes",
-  ],
-  openGraph: {
-    title: "Enes | Backend Developer Portfolio",
-    description:
-      "Backend Developer focused on APIs, scalable systems, and modern web technologies.",
-    url: "https://enesaksoy.com",
-    siteName: "Enes | Backend Developer Portfolio",
-    images: [
-      {
-        url: "/og-image.jpg", // Fotoğrafını public klasörüne og-image.jpg adıyla koymalısın
-        width: 1200,
-        height: 630,
-        alt: "Enes | Backend Developer Portfolio",
-      },
-    ],
-    locale: "tr_TR",
-    type: "website",
-  },
-  alternates: {
-    canonical: "/",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Enes | Backend Developer Portfolio",
-    description:
-      "Backend Developer focused on APIs, scalable systems, and modern web technologies.",
-    images: ["/og-image.jpg"],
-  },
-  verification: {
-    google: "yR-seIRg5BzVnUJFOVN5Jlq1wwv3oUxLP57Esarysjw",
-  },
-};
+export function generateStaticParams() {
+  return locales.map((lang) => ({ lang }));
+}
 
-export default function RootLayout({
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  if (!isLocale(lang)) return {};
+  const { meta } = dictionaries[lang];
+
+  return {
+    metadataBase: new URL(SITE_URL),
+    title: meta.title,
+    description: meta.description,
+    keywords: meta.keywords,
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      url: `/${lang}`,
+      siteName: "Enes Aksoy",
+      images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: meta.title }],
+      locale: meta.ogLocale,
+      alternateLocale: locales.filter((l) => l !== lang).map((l) => dictionaries[l].meta.ogLocale),
+      type: "website",
+    },
+    // hreflang pairs tell search engines /en and /tr are translations of each other
+    alternates: {
+      canonical: `/${lang}`,
+      languages: {
+        en: "/en",
+        tr: "/tr",
+        "x-default": "/",
+      },
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: meta.title,
+      description: meta.description,
+      images: ["/og-image.jpg"],
+    },
+    verification: {
+      google: "yR-seIRg5BzVnUJFOVN5Jlq1wwv3oUxLP57Esarysjw",
+    },
+  };
+}
+
+export default async function RootLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
-}) {
+} & Props) {
+  const { lang } = await params;
+  if (!isLocale(lang)) notFound();
+
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang={lang} className="dark" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
@@ -93,7 +101,7 @@ export default function RootLayout({
             `,
           }}
         />
-        <Providers>
+        <Providers locale={lang}>
           {children}
           <Analytics />
           <SpeedInsights />

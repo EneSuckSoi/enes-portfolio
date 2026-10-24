@@ -24,7 +24,7 @@ export default function Contact() {
         {EMAIL}
       </a>
 
-      <ul className="mt-10 flex gap-8">
+      <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-3">
         {profiles.map((p) => (
           <li key={p.name}>
             <a href={p.url} target="_blank" rel="noopener noreferrer" className="link">
@@ -32,6 +32,11 @@ export default function Contact() {
             </a>
           </li>
         ))}
+        <li>
+          <a href="/Enes_Aksoy_CV.pdf" download className="link">
+            {t.contact.cv}
+          </a>
+        </li>
       </ul>
     </Section>
   );

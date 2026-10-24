@@ -1,6 +1,7 @@
 "use client";
 
 import { CSSProperties } from "react";
+import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 
 const delay = (ms: number) => ({ "--delay": `${ms}ms` }) as CSSProperties;
@@ -13,13 +14,13 @@ export default function Hero() {
       id="home"
       className="mx-auto flex min-h-[92svh] max-w-5xl flex-col justify-end px-4 pb-20 pt-32 sm:px-6 sm:pb-28"
     >
-      <img
-        src="https://github.com/EneSuckSoi.png"
+      <Image
+        src="/avatar.jpg"
         alt=""
         width={72}
         height={72}
+        priority
         className="rise mb-8 h-16 w-16 rounded-full border border-line object-cover sm:h-[72px] sm:w-[72px]"
-        loading="eager"
       />
 
       <h1
@@ -42,6 +43,9 @@ export default function Hero() {
         </a>
         <a href="#contact" className="link">
           {t.hero.contactMe}
+        </a>
+        <a href="/Enes_Aksoy_CV.pdf" download className="link">
+          {t.hero.cv}
         </a>
       </div>
     </section>
