@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, useCallback, ReactNode } from "react";
+import React, { createContext, useContext, useState, useEffect, useCallback, ReactNode } from "react";
 import en from "@/locales/en.json";
 import tr from "@/locales/tr.json";
 
@@ -24,8 +24,31 @@ const LanguageContext = createContext<LanguageContextType>({
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [locale, setLocale] = useState<Locale>("en");
 
+  // Restore the saved choice, otherwise follow the browser language
+  useEffect(() => {
+    let stored: string | null = null;
+    try {
+      stored = localStorage.getItem("locale");
+    } catch {}
+    const initial = stored === "tr" || stored === "en"
+      ? stored
+      : navigator.language.toLowerCase().startsWith("tr") ? "tr" : "en";
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setLocale(initial);
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.lang = locale;
+  }, [locale]);
+
   const toggleLanguage = useCallback(() => {
-    setLocale((prev) => (prev === "en" ? "tr" : "en"));
+    setLocale((prev) => {
+      const next = prev === "en" ? "tr" : "en";
+      try {
+        localStorage.setItem("locale", next);
+      } catch {}
+      return next;
+    });
   }, []);
 
   return (

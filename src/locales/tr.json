@@ -1,44 +1,47 @@
 {
   "nav": {
-    "home": "Ana Sayfa",
     "about": "Hakkımda",
     "skills": "Yetenekler",
     "experience": "Deneyim",
     "projects": "Projeler",
-    "contact": "İletişim"
+    "contact": "İletişim",
+    "menu": "Menü",
+    "close": "Kapat",
+    "light": "Açık",
+    "dark": "Koyu",
+    "switchTheme": "{theme} temaya geç",
+    "switchLanguage": "Switch to English"
   },
   "hero": {
-    "greeting": "Merhaba, ben",
-    "name": "Enes",
-    "subtitle": "API geliştirme, ölçeklenebilir sistemler ve modern web teknolojileri üzerine çalışan bir Backend geliştiricisiyim.",
-    "viewProjects": "Projelerimi Gör",
-    "contactMe": "Benimle İletişime Geç"
+    "name": "Enes Aksoy",
+    "subtitle": "API geliştirme, ölçeklenebilir sistemler ve modern web teknolojileri üzerine çalışan bir backend geliştiricisiyim.",
+    "viewProjects": "Projeleri gör",
+    "contactMe": "İletişime geç"
   },
   "about": {
     "title": "Hakkımda",
     "description": "Backend geliştirme, API tasarımı ve veritabanı sistemleri üzerine çalışan bir yazılım geliştiricisiyim. Kurumsal CRM ve BPM projelerinde görev aldım ve modern web uygulamaları için ölçeklenebilir backend çözümleri geliştirdim.",
-    "focus": "Odaklandığım Alanlar",
     "areas": [
       {
-        "title": "Backend Geliştirme",
-        "desc": ".NET ve Node.js kullanarak güvenilir ve ölçeklenebilir sunucu tarafı uygulamaları geliştirme"
+        "title": "Backend geliştirme",
+        "desc": ".NET ve Node.js ile sunucu tarafı uygulamalar"
       },
       {
-        "title": "REST API Tasarımı",
-        "desc": "Temiz mimariye sahip, iyi dokümante edilmiş RESTful API'ler geliştirme"
+        "title": "REST API tasarımı",
+        "desc": "Temiz mimarili, iyi dokümante edilmiş RESTful API'ler"
       },
       {
-        "title": "Veritabanı Sistemleri",
-        "desc": "PostgreSQL, MongoDB, MSSQL ve MySQL gibi veritabanlarıyla çalışma deneyimi"
+        "title": "Veritabanı sistemleri",
+        "desc": "PostgreSQL, MongoDB, MSSQL ve MySQL"
       },
       {
-        "title": "Ölçeklenebilir Web Uygulamaları",
-        "desc": "Büyüyen iş ihtiyaçlarına uyum sağlayabilen web sistemleri geliştirme"
+        "title": "Ölçeklenebilir web uygulamaları",
+        "desc": "Büyüyen iş ihtiyaçlarına uyum sağlayan sistemler"
       }
     ]
   },
   "skills": {
-    "title": "Teknolojiler ve Yetenekler",
+    "title": "Yetenekler",
     "categories": {
       "backend": "Backend",
       "frontend": "Frontend",
@@ -48,19 +51,8 @@
   },
   "experience": {
     "title": "Deneyim",
-    "summary": "Profesyonel Deneyim",
+    "current": "Güncel pozisyon",
     "items": [
-      {
-        "role": "Stajyer Yazılım Geliştirici",
-        "company": "İstanbul Eczacılar Kooperatifi",
-        "description": "Şirket içi kullanılan teknolojileri inceleme ve öğrenme fırsatı buldum. Bu süreçte backend geliştirme, API tasarımı ve veritabanı sistemleri üzerine çalıştım.",
-        "highlights": [
-          "Şirket içi kullanılan teknolojileri inceleme ve öğrenme",
-          "Backend geliştirme",
-          "API tasarımı",
-          "Veritabanı sistemleri"
-        ]
-      },
       {
         "role": "Yazılım Geliştirici",
         "company": "İstanbul Eczacılar Kooperatifi",
@@ -71,21 +63,30 @@
           ".NET ile backend API geliştirme",
           "Veritabanı tasarımı ve entegrasyonu (MongoDB, MySQL)"
         ]
+      },
+      {
+        "role": "Stajyer Yazılım Geliştirici",
+        "company": "İstanbul Eczacılar Kooperatifi",
+        "description": "Şirket içinde kullanılan teknolojileri inceleyip öğrendim; backend geliştirme, API tasarımı ve veritabanı sistemleri üzerine çalıştım.",
+        "highlights": [
+          "Backend geliştirme",
+          "API tasarımı",
+          "Veritabanı sistemleri"
+        ]
       }
     ]
   },
   "projects": {
     "title": "Projeler",
-    "subtitle": "GitHub üzerindeki öne çıkan projelerim",
-    "viewOnGithub": "GitHub'da İncele",
-    "noDescription": "Açıklama bulunmuyor"
+    "subtitle": "GitHub'daki seçili projelerim.",
+    "all": "GitHub'daki tüm projeler",
+    "noDescription": "Henüz açıklama yok"
   },
   "contact": {
     "title": "İletişim",
-    "subtitle": "Aşağıdaki platformlar üzerinden benimle iletişime geçebilirsiniz.",
-    "email": "E-posta"
+    "subtitle": "Bana ulaşmanın en hızlı yolu e-posta."
   },
   "footer": {
-    "rights": "Tüm hakları saklıdır."
+    "top": "Başa dön"
   }
 }

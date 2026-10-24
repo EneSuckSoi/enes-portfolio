@@ -1,39 +1,42 @@
 {
   "nav": {
-    "home": "Home",
     "about": "About",
     "skills": "Skills",
     "experience": "Experience",
     "projects": "Projects",
-    "contact": "Contact"
+    "contact": "Contact",
+    "menu": "Menu",
+    "close": "Close",
+    "light": "Light",
+    "dark": "Dark",
+    "switchTheme": "Switch to {theme} theme",
+    "switchLanguage": "Türkçe'ye geç"
   },
   "hero": {
-    "greeting": "Hi, I'm",
-    "name": "Enes",
-    "subtitle": "Backend Developer focused on APIs, scalable systems, and modern web technologies.",
-    "viewProjects": "View Projects",
-    "contactMe": "Contact Me"
+    "name": "Enes Aksoy",
+    "subtitle": "Backend developer focused on APIs, scalable systems, and modern web technologies.",
+    "viewProjects": "See projects",
+    "contactMe": "Get in touch"
   },
   "about": {
-    "title": "About Me",
+    "title": "About",
     "description": "I'm a backend-focused developer with experience in API development, database design, and enterprise CRM/BPM systems. I build robust, scalable solutions that power modern applications.",
-    "focus": "Focus Areas",
     "areas": [
       {
-        "title": "Backend Development",
-        "desc": "Building robust server-side applications with .NET and Node.js"
+        "title": "Backend development",
+        "desc": "Server-side applications with .NET and Node.js"
       },
       {
-        "title": "REST API Design",
-        "desc": "Designing clean, well-documented RESTful APIs"
+        "title": "REST API design",
+        "desc": "Clean, well-documented RESTful APIs"
       },
       {
-        "title": "Database Systems",
-        "desc": "Working with PostgreSQL, MongoDB, MSSQL, and MySQL"
+        "title": "Database systems",
+        "desc": "PostgreSQL, MongoDB, MSSQL, and MySQL"
       },
       {
-        "title": "Scalable Web Apps",
-        "desc": "Creating applications that grow with business needs"
+        "title": "Scalable web apps",
+        "desc": "Applications that grow with business needs"
       }
     ]
   },
@@ -48,19 +51,8 @@
   },
   "experience": {
     "title": "Experience",
-    "summary": "Professional Experience",
+    "current": "Current role",
     "items": [
-      {
-        "role": "Intern Software Developer",
-        "company": "İstanbul Eczacılar Kooperatifi",
-        "description": "I had the opportunity to examine and learn the technologies used within the company. During this process, I worked on backend development, API design, and database systems.",
-        "highlights": [
-          "Examining and learning the technologies used within the company",
-          "Backend development",
-          "API design",
-          "Database systems"
-        ]
-      },
       {
         "role": "Software Developer",
         "company": "İstanbul Eczacılar Kooperatifi",
@@ -71,21 +63,30 @@
           "Backend API development with .NET",
           "Database design and integration (MongoDB, MySQL)"
         ]
+      },
+      {
+        "role": "Intern Software Developer",
+        "company": "İstanbul Eczacılar Kooperatifi",
+        "description": "Examined and learned the technologies used within the company, working on backend development, API design, and database systems.",
+        "highlights": [
+          "Backend development",
+          "API design",
+          "Database systems"
+        ]
       }
     ]
   },
   "projects": {
     "title": "Projects",
-    "subtitle": "Featured repositories from GitHub",
-    "viewOnGithub": "View on GitHub",
-    "noDescription": "No description available"
+    "subtitle": "Selected repositories from my GitHub.",
+    "all": "All repositories on GitHub",
+    "noDescription": "No description yet"
   },
   "contact": {
-    "title": "Get In Touch",
-    "subtitle": "Feel free to reach out through any of these platforms.",
-    "email": "Email"
+    "title": "Contact",
+    "subtitle": "Email is the fastest way to reach me."
   },
   "footer": {
-    "rights": "All rights reserved."
+    "top": "Back to top"
   }
 }
