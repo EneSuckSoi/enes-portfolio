@@ -19,7 +19,7 @@ export default function Contact() {
 
       <a
         href={`mailto:${EMAIL}`}
-        className="link mt-6 inline-block break-all font-display text-[clamp(1.6rem,5vw,3rem)] font-medium leading-tight tracking-tight"
+        className="link mt-6 inline-block break-all font-serif text-[clamp(1.6rem,5vw,2.75rem)] font-semibold leading-tight tracking-tight"
       >
         {EMAIL}
       </a>
@@ -32,11 +32,6 @@ export default function Contact() {
             </a>
           </li>
         ))}
-        <li>
-          <a href="/Enes_Aksoy_CV.pdf" download className="link">
-            {t.contact.cv}
-          </a>
-        </li>
       </ul>
     </Section>
   );

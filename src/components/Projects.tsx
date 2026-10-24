@@ -100,15 +100,15 @@ export default function Projects() {
                   rel="noopener noreferrer"
                   className="group grid gap-x-6 gap-y-1.5 py-5 sm:grid-cols-[1fr_auto]"
                 >
-                  <span className="text-lg font-medium text-ink transition-colors duration-150 group-hover:text-accent">
+                  <span className="text-lg font-semibold text-ink transition-colors duration-150 group-hover:text-accent">
                     {repo.name}
                   </span>
                   {repo.language && (
-                    <span className="text-sm text-faint sm:order-none sm:pt-1 sm:text-right">
+                    <span className="justify-self-start rounded-md border border-line bg-surface-2 px-2 py-0.5 text-sm text-muted sm:justify-self-end">
                       {repo.language}
                     </span>
                   )}
-                  <span className="leading-relaxed text-muted sm:col-start-1">
+                  <span className="leading-relaxed sm:col-start-1">
                     {repo.description || t.projects.noDescription}
                   </span>
                 </a>

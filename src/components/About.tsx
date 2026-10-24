@@ -12,11 +12,11 @@ export default function About() {
         {t.about.description}
       </p>
 
-      <dl className="mt-12 grid gap-x-10 gap-y-8 sm:grid-cols-2">
+      <dl className="mt-10 grid gap-x-10 gap-y-7 sm:grid-cols-2">
         {t.about.areas.map((area: { title: string; desc: string }) => (
-          <div key={area.title} className="border-t border-line pt-4">
-            <dt className="font-medium text-ink">{area.title}</dt>
-            <dd className="mt-1.5 leading-relaxed text-muted">{area.desc}</dd>
+          <div key={area.title} className="border-l-2 border-accent pl-4">
+            <dt className="font-semibold text-ink">{area.title}</dt>
+            <dd className="mt-1 leading-relaxed text-muted">{area.desc}</dd>
           </div>
         ))}
       </dl>

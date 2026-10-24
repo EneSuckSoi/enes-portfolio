@@ -7,8 +7,8 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-line">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-8 text-sm text-faint sm:px-6">
+    <footer>
+      <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-10 text-sm text-muted sm:px-6">
         <p>
           © {year} {t.hero.name}
         </p>

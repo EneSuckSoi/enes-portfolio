@@ -3,10 +3,12 @@
 import { useLanguage } from "@/context/LanguageContext";
 import Section from "./Section";
 
-const skillData: Record<string, string[]> = {
-  backend: [".NET", "REST APIs", "Node.js"],
-  frontend: ["JavaScript", "React", "Vue"],
+// Proper names stay the same in both languages; translated groups come from the locale
+const skillData: Record<string, string[] | null> = {
+  languages: ["C", "C#", "Java", "JavaScript"],
+  frameworks: ["ASP.NET", "Entity Framework", "MVC", "REST APIs"],
   databases: ["MySQL", "MongoDB", "MSSQL", "PostgreSQL"],
+  enterprise: null,
   tools: ["Git", "Docker", "Swagger"],
 };
 
@@ -15,17 +17,21 @@ export default function Skills() {
 
   return (
     <Section id="skills" title={t.skills.title}>
-      <dl className="border-b border-line">
+      <dl className="grid gap-x-12 gap-y-9 sm:grid-cols-2">
         {Object.entries(skillData).map(([category, skills]) => (
-          <div
-            key={category}
-            className="grid gap-2 border-t border-line py-5 sm:grid-cols-[9rem_1fr] sm:gap-6"
-          >
-            <dt className="text-muted">{t.skills.categories[category]}</dt>
-            <dd>
-              <ul className="flex flex-wrap gap-x-6 gap-y-1.5 text-lg text-ink">
-                {skills.map((skill) => (
-                  <li key={skill}>{skill}</li>
+          <div key={category}>
+            <dt className="font-serif text-xl font-semibold text-accent">
+              {t.skills.categories[category]}
+            </dt>
+            <dd className="mt-3">
+              <ul className="flex flex-wrap gap-2">
+                {(skills ?? t.skills.items[category]).map((skill: string) => (
+                  <li
+                    key={skill}
+                    className="rounded-md border border-line bg-surface-2 px-2.5 py-1 text-[0.9375rem] text-ink"
+                  >
+                    {skill}
+                  </li>
                 ))}
               </ul>
             </dd>

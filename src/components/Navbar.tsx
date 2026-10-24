@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useTheme } from "@/context/ThemeContext";
 import { useLanguage } from "@/context/LanguageContext";
 
-const sections = ["about", "skills", "experience", "projects", "contact"];
+const sections = ["about", "skills", "experience", "education", "projects", "contact"];
 
 export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
@@ -48,16 +48,16 @@ export default function Navbar() {
     <header
       className={`fixed inset-x-0 top-0 z-50 border-b backdrop-blur-md transition-colors duration-200 ${
         scrolled || mobileOpen
-          ? "border-line bg-[color-mix(in_srgb,var(--bg)_82%,transparent)]"
+          ? "border-line bg-[color-mix(in_srgb,var(--bg)_78%,transparent)]"
           : "border-transparent"
       }`}
     >
       <nav className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4 sm:px-6">
-        <a href="#home" className="font-display text-lg font-semibold tracking-tight text-ink">
+        <a href="#home" className="font-serif text-xl font-semibold text-ink">
           {t.hero.name}
         </a>
 
-        <ul className="hidden items-center gap-7 text-[0.95rem] md:flex">
+        <ul className="hidden items-center gap-6 text-[0.95rem] lg:flex">
           {sections.map((s) => (
             <li key={s}>
               <a
@@ -92,7 +92,7 @@ export default function Navbar() {
           </button>
           <button
             onClick={() => setMobileOpen((o) => !o)}
-            className="text-ink md:hidden"
+            className="text-ink lg:hidden"
             aria-expanded={mobileOpen}
             aria-controls="mobile-menu"
           >
@@ -103,7 +103,7 @@ export default function Navbar() {
 
       <div
         id="mobile-menu"
-        className={`grid transition-[grid-template-rows] duration-200 md:hidden ${
+        className={`grid transition-[grid-template-rows] duration-200 lg:hidden ${
           mobileOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
         }`}
       >

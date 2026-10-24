@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { IBM_Plex_Sans, IBM_Plex_Sans_Condensed } from "next/font/google";
+import { Source_Sans_3, Source_Serif_4 } from "next/font/google";
 import "../globals.css";
 import { Providers } from "../providers";
 import { Analytics } from "@vercel/analytics/next";
@@ -8,16 +8,16 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import Script from "next/script";
 import { dictionaries, isLocale, locales, SITE_URL } from "@/i18n";
 
-const plex = IBM_Plex_Sans({
+// Variable fonts; the serif's optical-size axis gives large headings a finer cut
+const sourceSerif = Source_Serif_4({
   subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "600"],
-  variable: "--font-plex",
+  axes: ["opsz"],
+  variable: "--font-source-serif",
 });
 
-const plexCondensed = IBM_Plex_Sans_Condensed({
+const sourceSans = Source_Sans_3({
   subsets: ["latin", "latin-ext"],
-  weight: ["500", "600"],
-  variable: "--font-plex-condensed",
+  variable: "--font-source-sans",
 });
 
 // Runs before paint so the saved or system theme applies without a flash
@@ -84,7 +84,7 @@ export default async function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body className={`${plex.variable} ${plexCondensed.variable} antialiased`}>
+      <body className={`${sourceSerif.variable} ${sourceSans.variable} antialiased`}>
         <Script
           strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-B7LXBDTPY0"

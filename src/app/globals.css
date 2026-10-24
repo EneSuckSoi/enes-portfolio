@@ -1,39 +1,52 @@
 @import "tailwindcss";
 
 /* ── Tokens ──
-   Cool grey paper / graphite, one muted steel-blue accent.
-   The accent is reserved for interaction: hover, focus, and the cursor field. */
+   Graphite / cool paper, a soft blue for structure (H3, links, current role)
+   and a warm sand for time (dates). Body text is kept high-contrast for reading. */
 :root {
-  --bg: #eef0f2;
-  --ink: #1a1d23;
-  --muted: #5b616b;
-  --faint: #868c95;
-  --line: #d3d7dc;
-  --field: #c6cbd2;
-  --accent: #2f5d8a;
+  --bg: #e9edf2;
+  --surface: rgb(255 255 255 / 0.78);
+  --surface-2: #eef1f5;
+  --ink: #131720;
+  --body: #2f3541;
+  --muted: #5e6674;
+  --line: #d3d9e1;
+  --accent: #2f5ea8;
+  --sand: #95672c;
+  --glow-1: rgb(98 140 214 / 0.38);
+  --glow-2: rgb(96 170 160 / 0.28);
+  --glow-3: rgb(214 170 110 / 0.26);
   color-scheme: light;
 }
 
 .dark {
-  --bg: #14171c;
-  --ink: #e3e6ea;
-  --muted: #9aa1ab;
-  --faint: #6b727c;
-  --line: #262b32;
-  --field: #2b3139;
-  --accent: #8fb0d6;
+  --bg: #11141a;
+  --surface: rgb(26 30 38 / 0.78);
+  --surface-2: #232833;
+  --ink: #f1f3f6;
+  --body: #d2d7df;
+  --muted: #949cab;
+  --line: #2e3440;
+  --accent: #9dbcf0;
+  --sand: #dcc08f;
+  --glow-1: rgb(74 108 184 / 0.42);
+  --glow-2: rgb(46 120 124 / 0.32);
+  --glow-3: rgb(120 88 150 / 0.28);
   color-scheme: dark;
 }
 
 @theme inline {
   --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
   --color-ink: var(--ink);
+  --color-body: var(--body);
   --color-muted: var(--muted);
-  --color-faint: var(--faint);
   --color-line: var(--line);
   --color-accent: var(--accent);
-  --font-sans: var(--font-plex), system-ui, sans-serif;
-  --font-display: var(--font-plex-condensed), var(--font-plex), system-ui, sans-serif;
+  --color-sand: var(--sand);
+  --font-sans: var(--font-source-sans), system-ui, sans-serif;
+  --font-serif: var(--font-source-serif), Georgia, serif;
 }
 
 html {
@@ -42,8 +55,9 @@ html {
 
 body {
   background-color: var(--bg);
-  color: var(--ink);
+  color: var(--body);
   font-family: var(--font-sans);
+  font-size: 1.0625rem;
   overflow-x: hidden;
   transition: background-color 200ms ease, color 200ms ease;
 }
@@ -56,7 +70,14 @@ body {
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
-  border-radius: 2px;
+  border-radius: 3px;
+}
+
+/* Section panel: sits in front of the ambient background */
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 1.25rem;
 }
 
 /* Text link: quiet underline that picks up the accent on hover */
@@ -91,12 +112,29 @@ body {
   animation-delay: var(--delay, 0ms);
 }
 
+/* Slow drift for the two ambient glows that don't follow the pointer */
+@keyframes drift {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(6vw, 4vh, 0);
+  }
+}
+
+.glow {
+  position: absolute;
+  border-radius: 9999px;
+  will-change: transform;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  .rise {
-    animation: none;
+  .rise,
+  .glow {
+    animation: none !important;
   }
 }
 

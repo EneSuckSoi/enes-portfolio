@@ -6,18 +6,20 @@ import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import FieldBackground from "@/components/FieldBackground";
+import AmbientBackground from "@/components/AmbientBackground";
+import Education from "@/components/Education";
 
 export default function Home() {
   return (
     <>
-      <FieldBackground />
+      <AmbientBackground />
       <Navbar />
-      <main>
+      <main className="space-y-6 sm:space-y-8">
         <Hero />
         <About />
         <Skills />
         <Experience />
+        <Education />
         <Projects />
         <Contact />
       </main>

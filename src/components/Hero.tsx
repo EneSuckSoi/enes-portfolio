@@ -12,7 +12,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="mx-auto flex min-h-[92svh] max-w-5xl flex-col justify-end px-4 pb-20 pt-32 sm:px-6 sm:pb-28"
+      className="mx-auto flex min-h-[88svh] max-w-5xl flex-col justify-end px-4 pb-16 pt-32 sm:px-6 sm:pb-24"
     >
       <Image
         src="/avatar.jpg"
@@ -24,14 +24,14 @@ export default function Hero() {
       />
 
       <h1
-        className="rise font-display text-[clamp(3.75rem,13vw,9.5rem)] font-semibold leading-[0.88] tracking-[-0.025em] text-ink"
+        className="rise font-serif text-[clamp(3.5rem,11vw,8rem)] font-semibold leading-[0.95] tracking-[-0.02em] text-ink"
         style={delay(80)}
       >
         {t.hero.name}
       </h1>
 
       <p
-        className="rise mt-8 max-w-xl text-lg leading-relaxed text-muted sm:text-xl"
+        className="rise mt-7 max-w-xl text-lg leading-relaxed text-body sm:text-xl"
         style={delay(220)}
       >
         {t.hero.subtitle}
@@ -43,9 +43,6 @@ export default function Hero() {
         </a>
         <a href="#contact" className="link">
           {t.hero.contactMe}
-        </a>
-        <a href="/Enes_Aksoy_CV.pdf" download className="link">
-          {t.hero.cv}
         </a>
       </div>
     </section>

@@ -3,6 +3,7 @@
     "about": "Hakkımda",
     "skills": "Yetenekler",
     "experience": "Deneyim",
+    "education": "Eğitim",
     "projects": "Projeler",
     "contact": "İletişim",
     "menu": "Menü",
@@ -16,8 +17,7 @@
     "name": "Enes Aksoy",
     "subtitle": "API geliştirme, ölçeklenebilir sistemler ve modern web teknolojileri üzerine çalışan bir backend geliştiricisiyim.",
     "viewProjects": "Projeleri gör",
-    "contactMe": "İletişime geç",
-    "cv": "CV'yi indir"
+    "contactMe": "İletişime geç"
   },
   "about": {
     "title": "Hakkımda",
@@ -25,7 +25,7 @@
     "areas": [
       {
         "title": "Backend geliştirme",
-        "desc": ".NET ve Node.js ile sunucu tarafı uygulamalar"
+        "desc": ".NET ve ASP.NET Core ile sunucu tarafı uygulamalar"
       },
       {
         "title": "REST API tasarımı",
@@ -44,10 +44,17 @@
   "skills": {
     "title": "Yetenekler",
     "categories": {
-      "backend": "Backend",
-      "frontend": "Frontend",
+      "languages": "Programlama dilleri",
+      "frameworks": "Framework'ler",
       "databases": "Veritabanları",
+      "enterprise": "Kurumsal sistemler",
       "tools": "Araçlar"
+    },
+    "items": {
+      "enterprise": [
+        "CRM sistemleri",
+        "BPM sistemleri"
+      ]
     }
   },
   "experience": {
@@ -58,9 +65,9 @@
         "company": "İstanbul Eczacılar Kooperatifi",
         "start": "2025-03",
         "end": null,
-        "description": "Kurumsal süreçler için kullanılan Kiva Platformu'nda CRM ve BPM modülleri ile bunların arkasındaki API ve veri katmanı üzerinde çalışıyorum.",
+        "description": "Kurumsal süreçler için kullanılan low-code platformda CRM ve BPM modülleri ile bunların arkasındaki API ve veri katmanı üzerinde çalışıyorum.",
         "highlights": [
-          "Verilen iş akışlarına uygun olarak Kiva BPM üzerinde otomatik süreç yönetimi kuralları, tetikleyiciler ve formlar tasarladım",
+          "Verilen iş akışlarına uygun olarak BPM üzerinde otomatik süreç yönetimi kuralları, tetikleyiciler ve formlar tasarladım; iş mantığını JavaScript ile yazdım",
           ".NET Core ile RESTful API'ler geliştirdim",
           "MySQL üzerinde kompleks sorgular, prosedürler ve performans iyileştirmeleri üzerinde çalıştım",
           "Birden fazla MySQL tablosundan JOIN ve filtreleme ile veri seti oluşturup Web API'de kullanılmak üzere MongoDB'ye aktardım"
@@ -71,7 +78,7 @@
         "company": "İstanbul Eczacılar Kooperatifi",
         "start": "2025-02",
         "end": "2025-03",
-        "description": "Kurumda kullanılan Kiva CRM platformunun temel kavramlarını öğrenerek sistem yapısını ve işleyişini analiz ettim.",
+        "description": "Kurumda kullanılan CRM platformunun temel kavramlarını öğrenerek sistem yapısını ve işleyişini analiz ettim.",
         "highlights": [
           "CRM ekranlarında kullanıcı arayüzü, veri yönetimi ve işlem mantıklarını inceledim",
           "İş süreçlerinin dijitalleştirilmesinde kullanılan araçlar ve iş akışı mantıkları hakkında deneyim kazandım"
@@ -79,6 +86,19 @@
       }
     ],
     "present": "Halen"
+  },
+  "education": {
+    "title": "Eğitim",
+    "gpa": "Not ortalaması",
+    "items": [
+      {
+        "school": "İstanbul Nişantaşı Üniversitesi",
+        "degree": "Bilgisayar Mühendisliği, Lisans",
+        "start": "2021-09",
+        "end": "2025-07",
+        "gpa": "3.53 / 4"
+      }
+    ]
   },
   "projects": {
     "title": "Projeler",
@@ -88,8 +108,7 @@
   },
   "contact": {
     "title": "İletişim",
-    "subtitle": "Bana ulaşmanın en hızlı yolu e-posta.",
-    "cv": "CV (PDF)"
+    "subtitle": "Bana ulaşmanın en hızlı yolu e-posta."
   },
   "footer": {
     "top": "Başa dön"
