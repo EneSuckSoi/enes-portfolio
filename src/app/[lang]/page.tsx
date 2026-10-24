@@ -6,13 +6,13 @@ import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import AmbientBackground from "@/components/AmbientBackground";
+import DotField from "@/components/DotField";
 import Education from "@/components/Education";
 
 export default function Home() {
   return (
     <>
-      <AmbientBackground />
+      <DotField />
       <Navbar />
       <main className="space-y-6 sm:space-y-8">
         <Hero />

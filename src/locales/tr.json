@@ -61,7 +61,7 @@
     "title": "Deneyim",
     "items": [
       {
-        "role": "Yazılım Geliştirme Uzman Yardımcısı",
+        "role": "Backend Yazılım Uzman Yardımcısı",
         "company": "İstanbul Eczacılar Kooperatifi",
         "start": "2025-03",
         "end": null,
@@ -97,6 +97,12 @@
         "start": "2021-09",
         "end": "2025-07",
         "gpa": "3.53 / 4"
+      },
+      {
+        "school": "Fahreddin Kerim Gökay Anadolu Lisesi",
+        "degree": "Sayısal",
+        "start": "2017-09",
+        "end": "2021-07"
       }
     ]
   },

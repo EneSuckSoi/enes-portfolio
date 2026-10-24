@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Source_Sans_3, Source_Serif_4 } from "next/font/google";
+import { Hanken_Grotesk } from "next/font/google";
 import "../globals.css";
 import { Providers } from "../providers";
 import { Analytics } from "@vercel/analytics/next";
@@ -8,16 +8,10 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import Script from "next/script";
 import { dictionaries, isLocale, locales, SITE_URL } from "@/i18n";
 
-// Variable fonts; the serif's optical-size axis gives large headings a finer cut
-const sourceSerif = Source_Serif_4({
+// One variable family for everything; latin-ext covers Turkish (ş, ğ, İ)
+const hanken = Hanken_Grotesk({
   subsets: ["latin", "latin-ext"],
-  axes: ["opsz"],
-  variable: "--font-source-serif",
-});
-
-const sourceSans = Source_Sans_3({
-  subsets: ["latin", "latin-ext"],
-  variable: "--font-source-sans",
+  variable: "--font-hanken",
 });
 
 // Runs before paint so the saved or system theme applies without a flash
@@ -80,11 +74,14 @@ export default async function RootLayout({
   if (!isLocale(lang)) notFound();
 
   return (
-    <html lang={lang} className="dark" suppressHydrationWarning>
+    // The font variable sits on <html> because Tailwind resolves --font-sans at :root.
+    // "dark" is left out: the theme script and ThemeProvider own that class, so a
+    // language switch (which re-renders this layout) can't reset it.
+    <html lang={lang} className={hanken.variable} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body className={`${sourceSerif.variable} ${sourceSans.variable} antialiased`}>
+      <body className="antialiased">
         <Script
           strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-B7LXBDTPY0"

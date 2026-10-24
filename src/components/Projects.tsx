@@ -108,7 +108,7 @@ export default function Projects() {
                       {repo.language}
                     </span>
                   )}
-                  <span className="leading-relaxed sm:col-start-1">
+                  <span className="max-w-3xl leading-relaxed sm:col-start-1">
                     {repo.description || t.projects.noDescription}
                   </span>
                 </a>

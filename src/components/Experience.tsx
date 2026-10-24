@@ -30,7 +30,7 @@ export default function Experience() {
       <div className="space-y-14">
         {groups.map((group) => (
           <div key={group.company}>
-            <h3 className="font-serif text-2xl font-semibold text-accent sm:text-[1.625rem]">
+            <h3 className="text-xl font-semibold tracking-[-0.015em] text-accent sm:text-2xl">
               {group.company}
             </h3>
 
@@ -49,8 +49,8 @@ export default function Experience() {
                       <h4 className="text-lg font-semibold text-ink">{item.role}</h4>
                       <Period start={item.start} end={item.end} />
                     </div>
-                    <p className="mt-3 leading-relaxed">{item.description}</p>
-                    <ul className="mt-4 space-y-2">
+                    <p className="mt-3 max-w-3xl leading-relaxed">{item.description}</p>
+                    <ul className="mt-4 max-w-3xl space-y-2">
                       {item.highlights.map((h) => (
                         <li key={h} className="flex gap-3 leading-relaxed">
                           <span aria-hidden="true" className="mt-[0.8rem] h-px w-3 shrink-0 bg-muted" />

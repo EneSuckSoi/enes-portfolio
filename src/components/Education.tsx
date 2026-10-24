@@ -21,7 +21,7 @@ export default function Education() {
       <ul className="space-y-10">
         {items.map((item) => (
           <li key={item.school}>
-            <h3 className="font-serif text-2xl font-semibold text-accent sm:text-[1.625rem]">
+            <h3 className="text-xl font-semibold tracking-[-0.015em] text-accent sm:text-2xl">
               {item.school}
             </h3>
             <div className="mt-3 flex flex-col gap-x-6 gap-y-1 sm:flex-row sm:items-baseline sm:justify-between">

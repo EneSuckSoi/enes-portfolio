@@ -53,7 +53,7 @@ export default function Navbar() {
       }`}
     >
       <nav className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4 sm:px-6">
-        <a href="#home" className="font-serif text-xl font-semibold text-ink">
+        <a href="#home" className="text-lg font-semibold tracking-[-0.02em] text-ink">
           {t.hero.name}
         </a>
 
@@ -74,6 +74,8 @@ export default function Navbar() {
         <div className="flex items-center gap-5 text-sm text-muted">
           <Link
             href={`/${otherLocale}`}
+            // Same page in the other language: keep the reader where they are
+            scroll={false}
             hrefLang={otherLocale}
             lang={otherLocale}
             onClick={() => rememberLocale(otherLocale)}

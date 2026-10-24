@@ -10,35 +10,39 @@ export default function Hero() {
   const { t } = useLanguage();
 
   return (
+    // Centred in the first screen; the extra bottom padding lifts the block slightly above the middle
     <section
       id="home"
-      className="mx-auto flex min-h-[88svh] max-w-5xl flex-col justify-end px-4 pb-16 pt-32 sm:px-6 sm:pb-24"
+      className="mx-auto flex min-h-[min(100svh,64rem)] max-w-5xl flex-col justify-center px-4 pb-24 pt-28 sm:px-6 sm:pb-32"
     >
       <Image
         src="/avatar.jpg"
         alt=""
-        width={72}
-        height={72}
+        width={128}
+        height={128}
         priority
-        className="rise mb-8 h-16 w-16 rounded-full border border-line object-cover sm:h-[72px] sm:w-[72px]"
+        className="rise h-24 w-24 rounded-full object-cover ring-1 ring-line ring-offset-4 ring-offset-bg sm:h-32 sm:w-32"
       />
 
       <h1
-        className="rise font-serif text-[clamp(3.5rem,11vw,8rem)] font-semibold leading-[0.95] tracking-[-0.02em] text-ink"
+        className="rise mt-9 text-[clamp(3.25rem,9.5vw,7.25rem)] font-semibold leading-[0.92] tracking-[-0.045em] text-ink"
         style={delay(80)}
       >
         {t.hero.name}
       </h1>
 
       <p
-        className="rise mt-7 max-w-xl text-lg leading-relaxed text-body sm:text-xl"
+        className="rise mt-7 max-w-xl text-lg leading-relaxed text-body sm:text-xl sm:leading-relaxed"
         style={delay(220)}
       >
         {t.hero.subtitle}
       </p>
 
-      <div className="rise mt-10 flex flex-wrap gap-x-8 gap-y-3 text-base" style={delay(340)}>
-        <a href="#projects" className="link">
+      <div
+        className="rise mt-10 flex flex-wrap items-center gap-x-8 gap-y-4 text-base"
+        style={delay(340)}
+      >
+        <a href="#projects" className="button">
           {t.hero.viewProjects}
         </a>
         <a href="#contact" className="link">

@@ -6,6 +6,7 @@ import Section from "./Section";
 export default function About() {
   const { t } = useLanguage();
 
+  // Description across the full panel width, focus areas in a 2×2 grid below it
   return (
     <Section id="about" title={t.about.title}>
       <p className="text-lg leading-relaxed text-ink sm:text-xl sm:leading-relaxed">

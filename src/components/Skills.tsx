@@ -9,7 +9,7 @@ const skillData: Record<string, string[] | null> = {
   frameworks: ["ASP.NET", "Entity Framework", "MVC", "REST APIs"],
   databases: ["MySQL", "MongoDB", "MSSQL", "PostgreSQL"],
   enterprise: null,
-  tools: ["Git", "Docker", "Swagger"],
+  tools: ["Git", "Docker", "Jenkins", "Swagger"],
 };
 
 export default function Skills() {
@@ -20,7 +20,7 @@ export default function Skills() {
       <dl className="grid gap-x-12 gap-y-9 sm:grid-cols-2">
         {Object.entries(skillData).map(([category, skills]) => (
           <div key={category}>
-            <dt className="font-serif text-xl font-semibold text-accent">
+            <dt className="text-lg font-semibold tracking-[-0.01em] text-accent">
               {t.skills.categories[category]}
             </dt>
             <dd className="mt-3">

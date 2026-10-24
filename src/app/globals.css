@@ -2,36 +2,38 @@
 
 /* ── Tokens ──
    Graphite / cool paper, a soft blue for structure (H3, links, current role)
-   and a warm sand for time (dates). Body text is kept high-contrast for reading. */
+   and a warm sand for time (dates). Body text is kept high-contrast for reading.
+   --dot / --dot-hot are "r g b" triplets for the canvas dot field: the edge and
+   centre colour of the patch of dots around the pointer. */
 :root {
-  --bg: #e9edf2;
-  --surface: rgb(255 255 255 / 0.78);
+  --bg: #eceff3;
+  --surface: rgb(255 255 255 / 0.92);
   --surface-2: #eef1f5;
   --ink: #131720;
   --body: #2f3541;
   --muted: #5e6674;
-  --line: #d3d9e1;
+  --line: #d5dae2;
   --accent: #2f5ea8;
+  --accent-ink: #ffffff;
   --sand: #95672c;
-  --glow-1: rgb(98 140 214 / 0.38);
-  --glow-2: rgb(96 170 160 / 0.28);
-  --glow-3: rgb(214 170 110 / 0.26);
+  --dot: 104 116 138;
+  --dot-hot: 47 94 168;
   color-scheme: light;
 }
 
 .dark {
-  --bg: #11141a;
-  --surface: rgb(26 30 38 / 0.78);
-  --surface-2: #232833;
+  --bg: #111419;
+  --surface: rgb(24 28 35 / 0.92);
+  --surface-2: #222731;
   --ink: #f1f3f6;
   --body: #d2d7df;
   --muted: #949cab;
-  --line: #2e3440;
+  --line: #2c323d;
   --accent: #9dbcf0;
+  --accent-ink: #111419;
   --sand: #dcc08f;
-  --glow-1: rgb(74 108 184 / 0.42);
-  --glow-2: rgb(46 120 124 / 0.32);
-  --glow-3: rgb(120 88 150 / 0.28);
+  --dot: 150 162 184;
+  --dot-hot: 170 198 244;
   color-scheme: dark;
 }
 
@@ -45,8 +47,7 @@
   --color-line: var(--line);
   --color-accent: var(--accent);
   --color-sand: var(--sand);
-  --font-sans: var(--font-source-sans), system-ui, sans-serif;
-  --font-serif: var(--font-source-serif), Georgia, serif;
+  --font-sans: var(--font-hanken), system-ui, sans-serif;
 }
 
 html {
@@ -64,7 +65,7 @@ body {
 
 ::selection {
   background: var(--accent);
-  color: var(--bg);
+  color: var(--accent-ink);
 }
 
 :focus-visible {
@@ -73,7 +74,7 @@ body {
   border-radius: 3px;
 }
 
-/* Section panel: sits in front of the ambient background */
+/* Section panel: sits in front of the dot field */
 .panel {
   background: var(--surface);
   border: 1px solid var(--line);
@@ -95,6 +96,27 @@ body {
   text-decoration-color: currentColor;
 }
 
+/* The one filled button on the page: the hero's primary action */
+.button {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 600;
+  padding: 0.7rem 1.35rem;
+  line-height: 1.2;
+  transition: background-color 150ms ease;
+}
+
+.button:hover {
+  background: color-mix(in srgb, var(--accent) 86%, var(--ink));
+}
+
+.button:focus-visible {
+  border-radius: 9999px;
+}
+
 /* ── The one orchestrated moment: hero entrance ── */
 @keyframes rise {
   from {
@@ -112,29 +134,34 @@ body {
   animation-delay: var(--delay, 0ms);
 }
 
-/* Slow drift for the two ambient glows that don't follow the pointer */
-@keyframes drift {
-  0%, 100% {
-    transform: translate3d(0, 0, 0);
+/* Section panels slide up as they scroll into view. Hidden only when scripts run,
+   so the content stays visible if JavaScript is off. */
+@media (scripting: enabled) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(3rem);
+    transition:
+      opacity 700ms ease,
+      transform 800ms cubic-bezier(0.2, 0.7, 0.2, 1);
   }
-  50% {
-    transform: translate3d(6vw, 4vh, 0);
-  }
-}
 
-.glow {
-  position: absolute;
-  border-radius: 9999px;
-  will-change: transform;
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  .rise,
-  .glow {
+  .rise {
     animation: none !important;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 }
 
