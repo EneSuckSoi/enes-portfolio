@@ -1,91 +1,142 @@
 {
   "nav": {
-    "home": "Home",
     "about": "About",
     "skills": "Skills",
     "experience": "Experience",
+    "education": "Education",
     "projects": "Projects",
-    "contact": "Contact"
+    "contact": "Contact",
+    "menu": "Menu",
+    "close": "Close",
+    "light": "Light",
+    "dark": "Dark",
+    "switchTheme": "Switch to {theme} theme",
+    "language": "Türkçe"
   },
   "hero": {
-    "greeting": "Hi, I'm",
-    "name": "Enes",
-    "subtitle": "Backend Developer focused on APIs, scalable systems, and modern web technologies.",
-    "viewProjects": "View Projects",
-    "contactMe": "Contact Me"
+    "name": "Enes Aksoy",
+    "subtitle": "Backend developer focused on APIs, scalable systems, and modern web technologies.",
+    "viewProjects": "See projects",
+    "contactMe": "Get in touch"
   },
   "about": {
-    "title": "About Me",
+    "title": "About",
     "description": "I'm a backend-focused developer with experience in API development, database design, and enterprise CRM/BPM systems. I build robust, scalable solutions that power modern applications.",
-    "focus": "Focus Areas",
     "areas": [
       {
-        "title": "Backend Development",
-        "desc": "Building robust server-side applications with .NET and Node.js"
+        "title": "Backend development",
+        "desc": "Server-side applications with .NET and ASP.NET Core"
       },
       {
-        "title": "REST API Design",
-        "desc": "Designing clean, well-documented RESTful APIs"
+        "title": "REST API design",
+        "desc": "Clean, well-documented RESTful APIs"
       },
       {
-        "title": "Database Systems",
-        "desc": "Working with PostgreSQL, MongoDB, MSSQL, and MySQL"
+        "title": "Database systems",
+        "desc": "PostgreSQL, MongoDB, MSSQL, and MySQL"
       },
       {
-        "title": "Scalable Web Apps",
-        "desc": "Creating applications that grow with business needs"
+        "title": "Scalable web apps",
+        "desc": "Applications that grow with business needs"
       }
     ]
   },
   "skills": {
     "title": "Skills",
     "categories": {
-      "backend": "Backend",
-      "frontend": "Frontend",
+      "languages": "Languages",
+      "frameworks": "Frameworks",
       "databases": "Databases",
+      "enterprise": "Enterprise systems",
       "tools": "Tools"
+    },
+    "items": {
+      "enterprise": [
+        "CRM systems",
+        "BPM systems"
+      ]
     }
   },
   "experience": {
     "title": "Experience",
-    "summary": "Professional Experience",
     "items": [
       {
-        "role": "Intern Software Developer",
+        "role": "Assistant Backend Software Specialist",
         "company": "İstanbul Eczacılar Kooperatifi",
-        "description": "I had the opportunity to examine and learn the technologies used within the company. During this process, I worked on backend development, API design, and database systems.",
+        "start": "2025-03",
+        "end": null,
+        "description": "Working on the CRM and BPM modules of the low-code platform used for the company's business processes, and building the APIs and data layer behind them.",
         "highlights": [
-          "Examining and learning the technologies used within the company",
-          "Backend development",
-          "API design",
-          "Database systems"
+          "Designed automated process rules, triggers, and forms in BPM based on given workflows, with business logic written in JavaScript",
+          "Developed RESTful APIs with .NET Core",
+          "Wrote complex queries and stored procedures in MySQL and worked on performance improvements",
+          "Built datasets from several MySQL tables with joins and filters, and moved them to MongoDB for use in a Web API"
         ]
       },
       {
-        "role": "Software Developer",
+        "role": "Software Development Intern",
         "company": "İstanbul Eczacılar Kooperatifi",
-        "description": "Developed and maintained enterprise CRM systems, designed BPM workflows, and built scalable backend APIs with database integrations.",
+        "start": "2025-02",
+        "end": "2025-03",
+        "description": "Learned the CRM platform used in the company and analyzed how the system is structured and how it works.",
         "highlights": [
-          "Enterprise CRM system development",
-          "BPM workflow design and implementation",
-          "Backend API development with .NET",
-          "Database design and integration (MongoDB, MySQL)"
+          "Studied the user interface, data management, and business logic of CRM screens",
+          "Gained experience with the tools and workflow logic used to digitize business processes"
         ]
+      }
+    ],
+    "present": "Present"
+  },
+  "education": {
+    "title": "Education",
+    "gpa": "GPA",
+    "items": [
+      {
+        "school": "İstanbul Nişantaşı University",
+        "degree": "B.Sc. in Computer Engineering",
+        "start": "2021-09",
+        "end": "2025-07",
+        "gpa": "3.53 / 4"
+      },
+      {
+        "school": "Fahreddin Kerim Gökay Anatolian High School",
+        "degree": "Science and Mathematics track",
+        "start": "2017-09",
+        "end": "2021-07"
       }
     ]
   },
   "projects": {
     "title": "Projects",
-    "subtitle": "Featured repositories from GitHub",
-    "viewOnGithub": "View on GitHub",
-    "noDescription": "No description available"
+    "subtitle": "Selected repositories from my GitHub.",
+    "all": "All repositories on GitHub",
+    "noDescription": "No description yet"
   },
   "contact": {
-    "title": "Get In Touch",
-    "subtitle": "Feel free to reach out through any of these platforms.",
-    "email": "Email"
+    "title": "Contact",
+    "subtitle": "Email is the fastest way to reach me."
   },
   "footer": {
-    "rights": "All rights reserved."
+    "top": "Back to top"
+  },
+  "meta": {
+    "title": "Enes Aksoy | Backend Developer",
+    "description": "Backend developer working with .NET, REST APIs, CRM/BPM processes, and database design.",
+    "keywords": [
+      "Enes Aksoy",
+      "Backend Developer",
+      ".NET",
+      "ASP.NET Core",
+      "REST API",
+      "CRM",
+      "BPM",
+      "MySQL",
+      "MongoDB"
+    ],
+    "ogLocale": "en_US"
+  },
+  "notFound": {
+    "message": "This page doesn't exist. It may have moved, or the link may be wrong.",
+    "home": "Go to the home page"
   }
 }

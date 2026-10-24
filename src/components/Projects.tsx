@@ -1,10 +1,8 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
-import { useTheme } from "@/context/ThemeContext";
-import ProjectCard from "./ProjectCard";
+import Section from "./Section";
 
 interface Repo {
   id: number;
@@ -16,16 +14,34 @@ interface Repo {
   updated_at: string;
 }
 
+const GITHUB_USER = "EneSuckSoi";
 const REQUIRED_REPOS = ["BackendTask", "UserManagementAPI"];
 const IGNORED_REPOS = ["EneSuckSoi", "Akbank-DL-Bootcamp-Project"];
 const MAX_REPOS = 6;
 
+const FALLBACK_REPOS: Repo[] = [
+  {
+    id: 1,
+    name: "UserManagementAPI",
+    description: "User management REST API built with .NET",
+    language: "C#",
+    html_url: `https://github.com/${GITHUB_USER}/UserManagementAPI`,
+    stargazers_count: 0,
+    updated_at: "",
+  },
+  {
+    id: 2,
+    name: "BackendTask",
+    description: "Backend task management application",
+    language: "C#",
+    html_url: `https://github.com/${GITHUB_USER}/BackendTask`,
+    stargazers_count: 0,
+    updated_at: "",
+  },
+];
+
 export default function Projects() {
   const { t } = useLanguage();
-  const { theme } = useTheme();
-  const isDark = theme === "dark";
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
   const [repos, setRepos] = useState<Repo[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -33,58 +49,29 @@ export default function Projects() {
     async function fetchRepos() {
       try {
         const res = await fetch(
-          "https://api.github.com/users/EneSuckSoi/repos?sort=updated&per_page=30"
+          `https://api.github.com/users/${GITHUB_USER}/repos?sort=updated&per_page=30`
         );
         if (!res.ok) throw new Error("Failed to fetch");
         const data: Repo[] = await res.json();
 
-        // 1. Remove unwanted repos immediately
-        const filteredData = data.filter(
-          (r) => !IGNORED_REPOS.includes(r.name)
-        );
+        const filtered = data.filter((r) => !IGNORED_REPOS.includes(r.name));
 
-        // 2. Extract and strictly sort required repos
-        const required = REQUIRED_REPOS.map(
-          (reqName) => filteredData.find((r) => r.name === reqName)
+        // Required repos first, in the listed order, then the most recently updated
+        const required = REQUIRED_REPOS.map((name) =>
+          filtered.find((r) => r.name === name)
         ).filter((r): r is Repo => r !== undefined);
 
-        // 3. Extract the remaining repos and sort them by recently updated
-        const others = filteredData
+        const others = filtered
           .filter((r) => !REQUIRED_REPOS.includes(r.name))
           .sort(
             (a, b) =>
-              new Date(b.updated_at).getTime() -
-              new Date(a.updated_at).getTime()
+              new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime()
           );
 
-        // Combine: strictly ordered required repos first, then the latest active repos
-        const remainingSlots = MAX_REPOS - required.length;
-        const combined = [...required, ...others.slice(0, remainingSlots)];
-        
-        setRepos(combined.slice(0, MAX_REPOS));
+        setRepos([...required, ...others].slice(0, MAX_REPOS));
       } catch (err) {
         console.error("Failed to fetch repos:", err);
-        // Fallback data
-        setRepos([
-          {
-            id: 1,
-            name: "UserManagementAPI",
-            description: "User management REST API built with .NET",
-            language: "C#",
-            html_url: "https://github.com/EneSuckSoi/UserManagementAPI",
-            stargazers_count: 0,
-            updated_at: new Date().toISOString(),
-          },
-          {
-            id: 2,
-            name: "BackendTask",
-            description: "Backend task management application",
-            language: "C#",
-            html_url: "https://github.com/EneSuckSoi/BackendTask",
-            stargazers_count: 0,
-            updated_at: new Date().toISOString(),
-          },
-        ]);
+        setRepos(FALLBACK_REPOS);
       } finally {
         setLoading(false);
       }
@@ -94,91 +81,49 @@ export default function Projects() {
   }, []);
 
   return (
-    <section id="projects" className="py-24 px-4">
-      <div ref={ref} className="max-w-5xl mx-auto">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="text-3xl sm:text-4xl font-bold text-center mb-4"
-          style={{ color: isDark ? "#f1f5f9" : "#0f172a" }}
-        >
-          {t.projects.title}
-        </motion.h2>
+    <Section id="projects" title={t.projects.title}>
+      <p className="mb-8 text-muted">{t.projects.subtitle}</p>
 
-        <motion.div
-          initial={{ opacity: 0, scaleX: 0 }}
-          animate={isInView ? { opacity: 1, scaleX: 1 } : {}}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          className="w-16 h-1 mx-auto mb-4 rounded-full"
-          style={{
-            background: "linear-gradient(90deg, #22d3ee, #6366f1)",
-          }}
-        />
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.3, duration: 0.5 }}
-          className="text-center mb-12 text-sm"
-          style={{ color: isDark ? "#94a3b8" : "#64748b" }}
-        >
-          {t.projects.subtitle}
-        </motion.p>
-
-        {loading ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {[...Array(6)].map((_, i) => (
-              <div
-                key={i}
-                className="glass-card rounded-xl p-6 animate-pulse"
-                style={{ height: 180 }}
-              >
-                <div
-                  className="h-4 rounded mb-3"
-                  style={{
-                    backgroundColor: isDark
-                      ? "rgba(255,255,255,0.06)"
-                      : "rgba(0,0,0,0.06)",
-                    width: "60%",
-                  }}
-                />
-                <div
-                  className="h-3 rounded mb-2"
-                  style={{
-                    backgroundColor: isDark
-                      ? "rgba(255,255,255,0.04)"
-                      : "rgba(0,0,0,0.04)",
-                    width: "100%",
-                  }}
-                />
-                <div
-                  className="h-3 rounded"
-                  style={{
-                    backgroundColor: isDark
-                      ? "rgba(255,255,255,0.04)"
-                      : "rgba(0,0,0,0.04)",
-                    width: "80%",
-                  }}
-                />
-              </div>
+      <ul className="border-b border-line" aria-busy={loading}>
+        {loading
+          ? [0, 1, 2].map((i) => (
+              <li key={i} className="border-t border-line py-6">
+                <div className="h-4 w-1/3 animate-pulse rounded bg-line" />
+                <div className="mt-3 h-3 w-2/3 animate-pulse rounded bg-line" />
+              </li>
+            ))
+          : repos.map((repo) => (
+              <li key={repo.id} className="border-t border-line">
+                <a
+                  href={repo.html_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group grid gap-x-6 gap-y-1.5 py-5 sm:grid-cols-[1fr_auto]"
+                >
+                  <span className="text-lg font-semibold text-ink transition-colors duration-150 group-hover:text-accent">
+                    {repo.name}
+                  </span>
+                  {repo.language && (
+                    <span className="justify-self-start rounded-md border border-line bg-surface-2 px-2 py-0.5 text-sm text-muted sm:justify-self-end">
+                      {repo.language}
+                    </span>
+                  )}
+                  <span className="max-w-3xl leading-relaxed sm:col-start-1">
+                    {repo.description || t.projects.noDescription}
+                  </span>
+                </a>
+              </li>
             ))}
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {repos.map((repo, i) => (
-              <ProjectCard
-                key={repo.id}
-                name={repo.name}
-                description={repo.description}
-                language={repo.language}
-                html_url={repo.html_url}
-                index={i}
-              />
-            ))}
-          </div>
-        )}
-      </div>
-    </section>
+      </ul>
+
+      <a
+        href={`https://github.com/${GITHUB_USER}?tab=repositories`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="link mt-8 inline-block"
+      >
+        {t.projects.all}
+      </a>
+    </Section>
   );
 }

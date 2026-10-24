@@ -1,140 +1,70 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
 import { useLanguage } from "@/context/LanguageContext";
-import { useTheme } from "@/context/ThemeContext";
+import Section from "./Section";
+import Period from "./Period";
+
+interface Item {
+  role: string;
+  company: string;
+  start: string;
+  end: string | null;
+  description: string;
+  highlights: string[];
+}
 
 export default function Experience() {
   const { t } = useLanguage();
-  const { theme } = useTheme();
-  const isDark = theme === "dark";
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const items: Item[] = t.experience.items;
+
+  // Consecutive roles at the same company share one timeline, newest first
+  const groups = items.reduce<{ company: string; roles: Item[] }[]>((acc, item) => {
+    const last = acc[acc.length - 1];
+    if (last?.company === item.company) last.roles.push(item);
+    else acc.push({ company: item.company, roles: [item] });
+    return acc;
+  }, []);
 
   return (
-    <section id="experience" className="py-24 px-4">
-      <div ref={ref} className="max-w-5xl mx-auto">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="text-3xl sm:text-4xl font-bold text-center mb-4"
-          style={{ color: isDark ? "#f1f5f9" : "#0f172a" }}
-        >
-          {t.experience.title}
-        </motion.h2>
+    <Section id="experience" title={t.experience.title}>
+      <div className="space-y-14">
+        {groups.map((group) => (
+          <div key={group.company}>
+            <h3 className="text-xl font-semibold tracking-[-0.015em] text-accent sm:text-2xl">
+              {group.company}
+            </h3>
 
-        <motion.div
-          initial={{ opacity: 0, scaleX: 0 }}
-          animate={isInView ? { opacity: 1, scaleX: 1 } : {}}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          className="w-16 h-1 mx-auto mb-12 rounded-full"
-          style={{
-            background: "linear-gradient(90deg, #22d3ee, #6366f1)",
-          }}
-        />
-
-        <div className="relative">
-          {/* Timeline line */}
-          <div
-            className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px"
-            style={{
-              backgroundColor: isDark
-                ? "rgba(255,255,255,0.08)"
-                : "rgba(0,0,0,0.08)",
-            }}
-          />
-
-          {t.experience.items.map(
-            (
-              item: {
-                role: string;
-                company: string;
-                description: string;
-                highlights: string[];
-              },
-              i: number
-            ) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: i % 2 === 0 ? -40 : 40 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ delay: 0.4 + i * 0.2, duration: 0.6 }}
-                className={`relative mb-12 md:w-1/2 ${
-                  i % 2 === 0
-                    ? "md:pr-12 ml-12 md:ml-0"
-                    : "md:pl-12 md:ml-auto ml-12"
-                }`}
-              >
-                {/* Timeline dot (desktop) */}
-                <div
-                  className="absolute w-3 h-3 rounded-full top-6 hidden md:block"
-                  style={{
-                    ...(i % 2 === 0
-                      ? { right: "-6px" }
-                      : { left: "-6px" }),
-                    background: "linear-gradient(135deg, #22d3ee, #6366f1)",
-                    boxShadow: "0 0 12px rgba(34, 211, 238, 0.4)",
-                  }}
-                />
-                {/* Mobile dot */}
-                <div
-                  className="absolute w-3 h-3 rounded-full top-6 md:hidden"
-                  style={{
-                    left: "-30px",
-                    background: "linear-gradient(135deg, #22d3ee, #6366f1)",
-                    boxShadow: "0 0 12px rgba(34, 211, 238, 0.4)",
-                  }}
-                />
-
-                <div className="glass-card rounded-xl p-6 transition-all duration-300 hover:scale-[1.02]">
-                  <h3
-                    className="text-lg font-semibold mb-0.5"
-                    style={{ color: isDark ? "#22d3ee" : "#0891b2" }}
-                  >
-                    {item.role}
-                  </h3>
-                  <div
-                    className="flex items-center gap-2 text-sm font-medium mb-3 italic tracking-wide"
-                    style={{ color: isDark ? "#94a3b8" : "#64748b" }}
-                  >
-                    <span 
-                      className="w-1 h-4 rounded-full" 
-                      style={{ background: isDark ? "rgba(34, 211, 238, 0.3)" : "rgba(8, 145, 178, 0.2)" }}
+            <ol className="mt-7 border-l-2 border-line">
+              {group.roles.map((item) => {
+                const current = item.end === null;
+                return (
+                  <li key={item.role} className="relative pb-12 pl-7 last:pb-0">
+                    <span
+                      aria-hidden="true"
+                      className={`absolute -left-[7px] top-[0.45rem] h-3 w-3 rounded-full border-2 ${
+                        current ? "border-accent bg-accent" : "border-muted bg-surface-2"
+                      }`}
                     />
-                    {item.company}
-                  </div>
-                  <p
-                    className="text-sm mb-4 leading-relaxed"
-                    style={{ color: isDark ? "#cbd5e1" : "#64748b" }}
-                  >
-                    {item.description}
-                  </p>
-                  <ul className="space-y-2">
-                    {item.highlights.map((h: string, hi: number) => (
-                      <li
-                        key={hi}
-                        className="flex items-start gap-2 text-sm"
-                        style={{ color: isDark ? "#cbd5e1" : "#475569" }}
-                      >
-                        <span
-                          className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"
-                          style={{
-                            background:
-                              "linear-gradient(135deg, #22d3ee, #6366f1)",
-                          }}
-                        />
-                        {h}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
-            )
-          )}
-        </div>
+                    <div className="flex flex-col gap-x-6 gap-y-1 sm:flex-row sm:items-baseline sm:justify-between">
+                      <h4 className="text-lg font-semibold text-ink">{item.role}</h4>
+                      <Period start={item.start} end={item.end} />
+                    </div>
+                    <p className="mt-3 max-w-3xl leading-relaxed">{item.description}</p>
+                    <ul className="mt-4 max-w-3xl space-y-2">
+                      {item.highlights.map((h) => (
+                        <li key={h} className="flex gap-3 leading-relaxed">
+                          <span aria-hidden="true" className="mt-[0.8rem] h-px w-3 shrink-0 bg-muted" />
+                          {h}
+                        </li>
+                      ))}
+                    </ul>
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
+        ))}
       </div>
-    </section>
+    </Section>
   );
 }

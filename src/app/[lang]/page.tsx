@@ -1,5 +1,3 @@
-"use client";
-
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -8,16 +6,20 @@ import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import DotField from "@/components/DotField";
+import Education from "@/components/Education";
 
 export default function Home() {
   return (
     <>
+      <DotField />
       <Navbar />
-      <main>
+      <main className="space-y-6 sm:space-y-8">
         <Hero />
         <About />
         <Skills />
         <Experience />
+        <Education />
         <Projects />
         <Contact />
       </main>

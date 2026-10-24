@@ -1,8 +1,17 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect, useCallback, ReactNode } from "react";
+import React, { createContext, useContext, useState, useLayoutEffect, useCallback, ReactNode } from "react";
 
 type Theme = "dark" | "light";
+
+// Same rule as the inline script in layout.tsx: saved choice first, then the system setting
+function storedTheme(): Theme {
+  try {
+    const saved = localStorage.getItem("theme");
+    if (saved === "light" || saved === "dark") return saved;
+  } catch {}
+  return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+}
 
 interface ThemeContextType {
   theme: Theme;
@@ -17,25 +26,24 @@ const ThemeContext = createContext<ThemeContextType>({
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>("dark");
 
-  useEffect(() => {
-    const stored = localStorage.getItem("theme") as Theme | null;
-    if (stored) {
-      setTheme(stored);
-    }
+  // The inline script applies the class on first load. Switching language re-renders
+  // the root layout without reloading, so re-apply the saved theme here before paint.
+  useLayoutEffect(() => {
+    const saved = storedTheme();
+    document.documentElement.classList.toggle("dark", saved === "dark");
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setTheme(saved);
   }, []);
 
-  useEffect(() => {
-    const root = document.documentElement;
-    if (theme === "dark") {
-      root.classList.add("dark");
-    } else {
-      root.classList.remove("dark");
-    }
-    localStorage.setItem("theme", theme);
-  }, [theme]);
-
   const toggleTheme = useCallback(() => {
-    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+    setTheme((prev) => {
+      const next = prev === "dark" ? "light" : "dark";
+      document.documentElement.classList.toggle("dark", next === "dark");
+      try {
+        localStorage.setItem("theme", next);
+      } catch {}
+      return next;
+    });
   }, []);
 
   return (
